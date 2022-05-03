@@ -5,7 +5,8 @@ const client = new Discord.Client({
 
     intents: [
         "GUILDS",
-        "GUILD_MESSAGES"
+        "GUILD_MESSAGES",
+        "GUILD_MEMBERS"
     ]
 
 });
@@ -17,9 +18,20 @@ client.once('ready', () => {
 
 client.on('messageCreate', (message) =>{
     if (message.content === 'ping'){
-        message.reply('pong')
+        message.reply('pong');
     }
 });
 
+client.on('messageCreate', (message) =>{
+    if (message.content === 'chad'){
+        message.reply('is a cuck');
+    }
+});
+
+const generalChannelID = '526971309188448273'
+
+client.on("guildMemberAdd", (member) =>{
+    member.guild.channels.cache.get(generalChannelID).send(`<@${member.id}> Welcome to the server!`)
+});
 
 client.login(process.env.TOKEN);

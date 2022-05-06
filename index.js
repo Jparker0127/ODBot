@@ -34,7 +34,7 @@ client.on("guildMemberAdd", (member) =>{
     member.guild.channels.cache.get(generalChannelID).send(`<@${member.id}> Welcome to the server!`)
 });
 
-const forbiddenWords = ["nigger", "lets go brandon"];
+const forbiddenWords = [];
 
 client.on("messageCreate", (message) => {
     for(var i = 0; i < forbiddenWords.length; i++) {

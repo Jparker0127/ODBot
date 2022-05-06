@@ -11,37 +11,46 @@ const client = new Discord.Client({
 
 });
 
-const prefix = '!';
-client.once('ready', () => {
-    console.log('ODB is online!');
-});
+let bot = {
+    client,
+    prefix: "!",
+    owners: ["218581948682076161"]
+}
 
-client.on('messageCreate', (message) =>{
-    if (message.content === 'ping'){
-        message.reply('pong');
-    }
-});
+client.commands = new Discord.Collection()
+client.events = new Discord.Collection()
 
-client.on('messageCreate', (message) =>{
-    if (message.content === 'chad'){
-        message.reply('is a cuck');
-    }
-});
+// const prefix = '!';
+// client.once('ready', () => {
+//     console.log('ODB is online!');
+// });
 
-const generalChannelID = '526971309188448273'
+// client.on('messageCreate', (message) =>{
+//     if (message.content === 'ping'){
+//         message.reply('pong');
+//     }
+// });
 
-client.on("guildMemberAdd", (member) =>{
-    member.guild.channels.cache.get(generalChannelID).send(`<@${member.id}> Welcome to the server!`)
-});
+// client.on('messageCreate', (message) =>{
+//     if (message.content === 'chad'){
+//         message.reply('is a cuck');
+//     }
+// });
 
-const forbiddenWords = [];
+// const generalChannelID = '526971309188448273'
 
-client.on("messageCreate", (message) => {
-    for(var i = 0; i < forbiddenWords.length; i++) {
-        if (message.content.includes(forbiddenWords[i])) {
-            message.delete();
-        } 
-    }             
-})
+// client.on("guildMemberAdd", (member) =>{
+//     member.guild.channels.cache.get(generalChannelID).send(`<@${member.id}> Welcome to the server!`)
+// });
 
-client.login(process.env.TOKEN);
+// const forbiddenWords = [];
+
+// client.on("messageCreate", (message) => {
+//     for(var i = 0; i < forbiddenWords.length; i++) {
+//         if (message.content.includes(forbiddenWords[i])) {
+//             message.delete();
+//         } 
+//     }             
+// })
+
+// client.login(process.env.TOKEN);
